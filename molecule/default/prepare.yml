@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars:
+    stern_version: '1.24.0'
+
+  roles:
+    - m18unet.stern

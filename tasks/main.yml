@@ -1,0 +1,17 @@
+---
+- name: Check the presence of the stern binary.
+  stat:
+    path: "{{ stern_bin_path }}"
+  register: stern_check
+
+- name: Check the stern version.
+  shell: "{{ stern_bin_path }} --version"
+  failed_when: false
+  changed_when: false
+  register: stern_current_version
+
+- name: Install stern v{{ stern_version }}
+  include_tasks: install.yml
+  when: >-
+    not stern_check.stat.exists
+    or stern_version not in stern_current_version.stdout

@@ -1,0 +1,10 @@
+---
+stern_version: '1.26.0'
+stern_platform: linux
+stern_arch: amd64
+stern_bin_path: /usr/local/bin/stern
+
+stern_release_url: https://github.com/stern/stern/releases/download/v{{ stern_version }}
+stern_archive_name: stern_{{ stern_version }}_{{ stern_platform }}_{{ stern_arch }}.tar.gz
+stern_download_url: "{{ stern_release_url }}/{{ stern_archive_name }}"
+stern_checksum_url: "{{ stern_release_url }}/checksums.txt"

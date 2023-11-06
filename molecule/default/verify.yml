@@ -1,0 +1,19 @@
+---
+- name: Verify
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars_files:
+    - ../../defaults/main.yml
+
+  tasks:
+    - name: Check the stern version.
+      command: "{{ stern_bin_path }} --version"
+      changed_when: false
+      register: stern_verify_version
+
+    - name: Verify stern's version is {{ stern_version }}
+      assert:
+        that:
+          - stern_version in stern_verify_version.stdout
