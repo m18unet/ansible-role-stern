@@ -19,7 +19,7 @@ None.
 ```yaml
 - hosts: all
   roles:
-    - m18uet.stern
+    - m18unet.stern
 ```
 
 ## License
